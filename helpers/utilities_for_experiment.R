@@ -32,7 +32,7 @@ ada_log_weight = function(data,
     df_train = df[which(labels_train==1),]
     df_test = df[which(labels_train==0),]
 
-    # run adaboost
+    # run AdaBoost
     model_ada = ada(y ~ ., data = df_train, type = "real",
                     control = control,iter=num_trees_max, nu=learn_rate, bag.frac=0.5,
                     test.x = df_test[, -1], test.y = df_test$y)
@@ -45,11 +45,11 @@ ada_log_weight = function(data,
   model = ada(y ~ ., data = df, type = "real",
               control = control,iter=num_tree_opt_ada, nu=0.01, bag.frac=0.5)
 
-  # evaluation on the observed data sets
+  # evaluation for the observed data sets
   prob_pred_data = predict(model, df, type = "prob")
   log_w_hat_ada_data = log(prob_pred_data[,1] / prob_pred_data[,2] * n1 / n0)
 
-  # evaluation on the grid points
+  # evaluation for the grid points
   if(!is.null(grid.points)){
     df_grid = data.frame(y = factor(rep(0, nrow(grid.points))), grid.points)
     colnames(df_grid)[-1] = labels_X
