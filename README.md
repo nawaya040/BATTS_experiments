@@ -1,4 +1,4 @@
-# boostPM_experiments
+# BATTS_experiments
 
 This repository provides program code to reproduce the numerical experiments in Awaya, Xu, and Ma (2025).
 
