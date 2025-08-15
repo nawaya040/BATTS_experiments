@@ -85,15 +85,15 @@ log_w_true_data = out_data$true_log_w_obs
 
 ########################################################################################################
 # method 1: proposed boosting (gradient based)
-result_estimation = estimate_balancing_weight_boosting(data = data,
-                                                       group_labels = group_labels,
-                                                       num_trees = num_trees_max,
-                                                       K_CV = K_CV,
-                                                       max_resol = max_depth,
-                                                       learn_rate = learn_rate,
-                                                       n_bins = n_bins,
-                                                       use_gradient = T,
-                                                       quiet = T
+result_estimation = boots(data = data,
+                           group_labels = group_labels,
+                           num_trees = num_trees_max,
+                           K_CV = K_CV,
+                           max_resol = max_depth,
+                           learn_rate = learn_rate,
+                           n_bins = n_bins,
+                           use_gradient = T,
+                           quiet = T
 )
 
 # result of the boosting
@@ -105,15 +105,15 @@ error_group1_vec[1] = compute_sq_error(log_ratio_boosting_grad_data[indices_grou
 
 ########################################################################################################
 # method 2: proposed boosting (hellinger based)
-result_estimation = estimate_balancing_weight_boosting(data = data,
-                                                       group_labels = group_labels,
-                                                       num_trees = num_trees_max,
-                                                       K_CV = K_CV,
-                                                       max_resol = max_depth,
-                                                       learn_rate = learn_rate,
-                                                       n_bins = n_bins,
-                                                       use_gradient = F,
-                                                       quiet = T
+result_estimation = boots(data = data,
+                           group_labels = group_labels,
+                           num_trees = num_trees_max,
+                           K_CV = K_CV,
+                           max_resol = max_depth,
+                           learn_rate = learn_rate,
+                           n_bins = n_bins,
+                           use_gradient = F,
+                           quiet = T
 )
 
 loss_hel = colMeans(result_estimation$loss_CV_store)
@@ -126,15 +126,15 @@ error_group1_vec[2] = compute_sq_error(log_ratio_boosting_hel_data[indices_group
 
 ########################################################################################################
 # method 3: proposed back-fitting
-result_estimation = estimate_balancing_weight_Bayes(data = data,
-                                                    group_labels = group_labels,
-                                                    num_trees = num_trees_Bayes,
-                                                    n_bins = n_bins,
-                                                    size_burnin = size_burnin,
-                                                    size_backfitting = size_backfitting,
-                                                    output_BART_ensembles = FALSE,
-                                                    quiet = T,
-                                                    update_lambda = FALSE
+result_estimation = batts(data = data,
+                          group_labels = group_labels,
+                          num_trees = num_trees_Bayes,
+                          n_bins = n_bins,
+                          size_burnin = size_burnin,
+                          size_backfitting = size_backfitting,
+                          output_BART_ensembles = FALSE,
+                          quiet = T,
+                          update_lambda = FALSE
 )
 
 # result of the BART
