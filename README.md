@@ -6,11 +6,11 @@ The details are provided in
 
 Awaya, Xu, and Ma (2025). Two-sample comparison through additive tree models for density ratios. arXiv preprint arXiv:2508.03059.
 
-To run the programs, the R package `balancePM` needs to be installed  using `devtools` as follows:
+To run the programs, the R package `BATTS` needs to be installed  using `devtools` as follows:
 
 ```
 library(devtools)
-install_github("nawaya040/balancePM")
+install_github("nawaya040/BATTS")
 ```
 
 The following files are included:

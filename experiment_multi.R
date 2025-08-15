@@ -1,7 +1,7 @@
 # this code reproduces the 20D experiment provided in Awaya, Xu, and Ma (2025)
 
 library(mvtnorm)
-library(balancePM)
+library(BATTS)
 library(ada)
 library(pracma)
 
