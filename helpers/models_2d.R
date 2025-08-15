@@ -1,4 +1,4 @@
-simulation_2d = function(n0, n1, scenario, n_grid_per_dim){
+simulation_2d = function(n0, n1, scenario, n_grid_per_dim = 100){
 
   library(mvtnorm)
 
@@ -10,7 +10,8 @@ simulation_2d = function(n0, n1, scenario, n_grid_per_dim){
 
   differences_log_dens = numeric(n)
 
-  # note: we do not add uniform noise to the data so the prob is set to zero
+  # note: this parameter was used to add uniform noise to the data
+  #         not used in the current version
   unif_w = 0.0
 
   if(scenario == "global_shift"){
@@ -46,7 +47,7 @@ simulation_2d = function(n0, n1, scenario, n_grid_per_dim){
 
     differences_log_dens = log_densities_0 - log_densities_1
 
-    #Make the grid points
+    # make the grid points
     x.grid = seq(range_x[1],range_x[2],length.out = n_grid_per_dim)
     y.grid = seq(range_y[1],range_y[2],length.out = n_grid_per_dim)
     grid.points = as.matrix(expand.grid(x.grid,y.grid))
@@ -141,7 +142,7 @@ simulation_2d = function(n0, n1, scenario, n_grid_per_dim){
 
     differences_log_dens = log_densities_0 - log_densities_1
 
-    #Make the grid points
+    # make the grid points
     x.grid = seq(range_x[1],range_x[2],length.out = n_grid_per_dim)
     y.grid = seq(range_y[1],range_y[2],length.out = n_grid_per_dim)
     grid.points = as.matrix(expand.grid(x.grid,y.grid))
@@ -267,7 +268,7 @@ simulation_2d = function(n0, n1, scenario, n_grid_per_dim){
 
     differences_log_dens = log_densities_0 - log_densities_1
 
-    #Make the grid points
+    # make the grid points
     x.grid = seq(range_x[1],range_x[2],length.out = n_grid_per_dim)
     y.grid = seq(range_y[1],range_y[2],length.out = n_grid_per_dim)
     grid.points = as.matrix(expand.grid(x.grid,y.grid))
